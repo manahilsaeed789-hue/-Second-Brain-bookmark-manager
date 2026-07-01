@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% from "components/sidebar.html" import sidebar %}
+{% block title %}Bookmark — Second Brain{% endblock %}
+{% block body %}
+<div class="app-layout">
+    {{ sidebar('bookmarks') }}
+    <main class="main-content">
+        <div id="bookmarkDetail" class="bookmark-detail">
+            <div class="loading">Loading bookmark...</div>
+        </div>
+    </main>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+    const BOOKMARK_ID = {{ bookmark_id }};
+</script>
+<script src="/static/js/bookmark_detail.js"></script>
+{% endblock %}

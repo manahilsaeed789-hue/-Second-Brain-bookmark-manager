@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% from "components/sidebar.html" import sidebar %}
+{% block title %}AI Chat — Second Brain{% endblock %}
+{% block body %}
+<div class="app-layout">
+    {{ sidebar('chat') }}
+    <main class="main-content chat-layout">
+        <header class="page-header">
+            <div>
+                <h1>Chat with Your Bookmarks</h1>
+                <p class="page-subtitle">Ask questions about your saved knowledge (RAG-powered)</p>
+            </div>
+        </header>
+        <div class="chat-container">
+            <div id="chatMessages" class="chat-messages">
+                <div class="chat-message assistant">
+                    <div class="message-content">
+                        Hi! I can answer questions based on your saved bookmarks. Try asking something like "What have I saved about machine learning?" or "Summarize my productivity notes."
+                    </div>
+                </div>
+            </div>
+            <form id="chatForm" class="chat-input-form">
+                <input type="text" id="chatInput" placeholder="Ask about your saved knowledge..." autocomplete="off">
+                <button type="submit" class="btn btn-primary">Send</button>
+            </form>
+        </div>
+    </main>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="/static/js/chat.js"></script>
+{% endblock %}

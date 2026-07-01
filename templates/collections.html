@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% from "components/sidebar.html" import sidebar %}
+{% block title %}Collections — Second Brain{% endblock %}
+{% block body %}
+<div class="app-layout">
+    {{ sidebar('collections') }}
+    <main class="main-content">
+        <header class="page-header">
+            <div>
+                <h1>Smart Collections</h1>
+                <p class="page-subtitle">Auto-grouped bookmarks by topic</p>
+            </div>
+        </header>
+        <div id="collectionsGrid" class="collections-grid"></div>
+    </main>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="/static/js/collections.js"></script>
+{% endblock %}

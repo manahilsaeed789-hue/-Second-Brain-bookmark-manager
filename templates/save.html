@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% from "components/sidebar.html" import sidebar %}
+{% block title %}Save Content — Second Brain{% endblock %}
+{% block body %}
+<div class="app-layout">
+    {{ sidebar('save') }}
+    <main class="main-content">
+        <header class="page-header">
+            <div>
+                <h1>Save Content</h1>
+                <p class="page-subtitle">Add new knowledge to your second brain</p>
+            </div>
+        </header>
+
+        <div class="save-tabs">
+            <button class="tab-btn active" data-tab="url">URL</button>
+            <button class="tab-btn" data-tab="note">Note</button>
+            <button class="tab-btn" data-tab="paste">Paste Text</button>
+            <button class="tab-btn" data-tab="upload">Upload File</button>
+        </div>
+
+        <div class="save-panels">
+            <div class="tab-panel active" id="panel-url">
+                <form id="urlForm" class="save-form">
+                    <div class="form-group">
+                        <label>URL</label>
+                        <input type="url" id="urlInput" required placeholder="https://example.com/article">
+                    </div>
+                    <div class="form-group">
+                        <label>Notes (optional)</label>
+                        <textarea id="urlNotes" rows="3" placeholder="Add personal notes..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save URL</button>
+                </form>
+            </div>
+            <div class="tab-panel" id="panel-note">
+                <form id="noteForm" class="save-form">
+                    <div class="form-group">
+                        <label>Title</label>
+                        <input type="text" id="noteTitle" required placeholder="My Note Title">
+                    </div>
+                    <div class="form-group">
+                        <label>Content</label>
+                        <textarea id="noteContent" rows="8" required placeholder="Write your note..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save Note</button>
+                </form>
+            </div>
+            <div class="tab-panel" id="panel-paste">
+                <form id="pasteForm" class="save-form">
+                    <div class="form-group">
+                        <label>Title (optional)</label>
+                        <input type="text" id="pasteTitle" placeholder="Auto-detected from content">
+                    </div>
+                    <div class="form-group">
+                        <label>Article Text</label>
+                        <textarea id="pasteContent" rows="10" required placeholder="Paste article or text content..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save Content</button>
+                </form>
+            </div>
+            <div class="tab-panel" id="panel-upload">
+                <form id="uploadForm" class="save-form">
+                    <div class="form-group">
+                        <label>Upload PDF, TXT, or Markdown</label>
+                        <div class="file-drop" id="fileDrop">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                            <p>Drag & drop or click to browse</p>
+                            <input type="file" id="fileInput" accept=".pdf,.txt,.md,.markdown" hidden>
+                        </div>
+                        <p id="fileName" class="file-name"></p>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="uploadBtn" disabled>Upload & Save</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="saveStatus" class="save-status hidden"></div>
+    </main>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="/static/js/save.js"></script>
+{% endblock %}

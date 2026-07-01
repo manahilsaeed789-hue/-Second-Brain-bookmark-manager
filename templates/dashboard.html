@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% from "components/sidebar.html" import sidebar %}
+{% block title %}Dashboard — Second Brain{% endblock %}
+{% block body %}
+<div class="app-layout">
+    {{ sidebar('dashboard') }}
+    <main class="main-content">
+        <header class="page-header">
+            <div>
+                <h1>Dashboard</h1>
+                <p class="page-subtitle">Your personal knowledge overview</p>
+            </div>
+            <a href="/save" class="btn btn-primary">+ Save Content</a>
+        </header>
+
+        <div class="stats-grid" id="statsGrid">
+            <div class="stat-card">
+                <div class="stat-icon purple"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg></div>
+                <div class="stat-info"><span class="stat-value" id="totalBookmarks">—</span><span class="stat-label">Total Bookmarks</span></div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon blue"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg></div>
+                <div class="stat-info"><span class="stat-value" id="totalCategories">—</span><span class="stat-label">Categories</span></div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon green"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+                <div class="stat-info"><span class="stat-value" id="readingTime">—</span><span class="stat-label">Reading Time (min)</span></div>
+            </div>
+        </div>
+
+        <div class="dashboard-grid">
+            <section class="card">
+                <h2>Recent Saves</h2>
+                <div id="recentBookmarks" class="bookmark-list"></div>
+            </section>
+            <section class="card">
+                <h2>Trending Interests</h2>
+                <div id="trendingTags" class="tag-cloud"></div>
+            </section>
+            <section class="card">
+                <h2>Daily Rediscovery</h2>
+                <p class="card-desc">Forgotten gems from your knowledge base</p>
+                <div id="rediscovery" class="bookmark-list"></div>
+            </section>
+            <section class="card">
+                <h2>Recommended Revisit</h2>
+                <p class="card-desc">Worth reading again</p>
+                <div id="revisit" class="bookmark-list"></div>
+            </section>
+            <section class="card card-wide">
+                <h2>Knowledge Map</h2>
+                <div id="knowledgeMap" class="knowledge-map"></div>
+            </section>
+        </div>
+    </main>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="/static/js/dashboard.js"></script>
+{% endblock %}

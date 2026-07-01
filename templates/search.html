@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% from "components/sidebar.html" import sidebar %}
+{% block title %}Search — Second Brain{% endblock %}
+{% block body %}
+<div class="app-layout">
+    {{ sidebar('search') }}
+    <main class="main-content">
+        <header class="page-header">
+            <div>
+                <h1>Semantic Search</h1>
+                <p class="page-subtitle">Find knowledge using natural language</p>
+            </div>
+        </header>
+
+        <div class="search-box">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="searchInput" placeholder='Try "articles about improving focus" or "neural networks"...' autofocus>
+            <button id="searchBtn" class="btn btn-primary">Search</button>
+        </div>
+
+        <div class="search-suggestions">
+            <span>Suggestions:</span>
+            <button class="suggestion-chip" data-q="productivity tips">productivity tips</button>
+            <button class="suggestion-chip" data-q="machine learning tutorials">machine learning tutorials</button>
+            <button class="suggestion-chip" data-q="career advice">career advice</button>
+        </div>
+
+        <div id="searchResults" class="search-results"></div>
+    </main>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="/static/js/search.js"></script>
+{% endblock %}
